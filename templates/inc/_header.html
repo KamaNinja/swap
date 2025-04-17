@@ -1,0 +1,15 @@
+{% load ads_tags %}
+<header>
+  <nav>
+    <a href="{% url 'home' %}">Главная</a>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'add_ad' %}">Добавить объявление</a>
+    <a href="{% url 'my_ads' %}">Мои объявления</a>
+    <a href="{% url 'my_proposals' %}">Мои предложения {% number_pending_proposals request as number %} {{ number }}</a>
+    <a href="{% url 'logout' %}">Выход ({{ request.user }})</a>
+    {% else %}
+    <a href="{% url 'login' %}">Вход</a>
+    <a href="{% url 'register' %}">Регистрация</a>
+    {% endif %}
+  </nav>
+</header>

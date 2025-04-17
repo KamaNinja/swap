@@ -1,0 +1,168 @@
+/* Базовые стили для страницы */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Контейнер для основного контента */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Ссылка, чтобы весь блок был кликабельным */
+.ad-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Изображение */
+.ad-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.ad-item h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.ad-item p {
+    margin: 10px 0;
+    font-size: 0.9em;
+}
+
+.ad-item .meta {
+    font-size: 0.8em;
+    color: #777;
+}
+
+.ad-item .meta span {
+    margin-right: 10px;
+}
+
+/* Стиль для описания */
+.ad-item .description {
+    font-size: 0.9em;
+    margin-top: 10px;
+    color: #555;
+}
+
+/* Стиль для объявления */
+.ad-details {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ad-details h2 {
+    font-size: 2em;
+    margin-top: 0;
+}
+
+.ad-details .meta {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 10px;
+}
+
+.ad-details .meta span {
+    margin-right: 10px;
+}
+
+.ad-details .description {
+    font-size: 1em;
+    margin-top: 15px;
+    color: #555;
+}
+
+.ad-details img {
+    width: 600px;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.proposals-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.proposal-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.proposal-item:hover {
+    transform: translateY(-5px);
+}
+
+.proposal-item h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.proposal-item .meta {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 10px;
+}
+
+.proposal-item .meta span {
+    margin-right: 10px;
+}
+
+.proposal-item p {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #555;
+}
+
+.proposal-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.message-bar {
+    color: #721c24;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+}
+
+.message-bar .message {
+    margin: 0;
+}
+
+.message-bar .message.info {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.message-bar .message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.message-bar .message.warning {
+    background-color: #fff3cd;
+    color: #856404;
+}

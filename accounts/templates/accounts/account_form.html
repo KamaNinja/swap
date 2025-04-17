@@ -1,0 +1,11 @@
+{% extends 'ads/base.html' %}
+{% block content %}
+<div class="form-container">
+    <h2>{{ title }}</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{{ button_text }}</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'ads/base.html' %}
+{% block content %}
+<h2>Предложение об обмене</h2>
+<div class="ad-details">
+  <div class="meta">
+    <span>Дата предложения: {{ proposal.created_at }}</span>
+    <br>
+    <span>Статус: {{ proposal.get_status_display }}</span>
+    {% if proposal.comment %}<p>Комментарий: {{ proposal.comment }}</p>{% endif %}
+  </div>
+  <div class="ad-details">
+    {% if proposal.ad_sender.user != request.user %}
+      <h3>Вы отдаете</h3>
+    {% else %}
+     <h3>Вы получаете</h3>
+    {% endif %}
+    <div class="meta">
+      <span>Дата объявления: {{ proposal.ad_receiver.created_at }}</span>
+      <span>Пользователь: {{ proposal.ad_receiver.user }}</span>
+      <span>Состояние: {{ proposal.ad_receiver.condition }}</span>
+    </div>
+    <p>{{ proposal.ad_receiver.title }}</p>
+    <p>{{ proposal.ad_receiver.description }}</p>
+    <img src="{{ proposal.ad_receiver.image.url }}"/>
+  </div>
+
+  <div class="ad-details">
+    {% if proposal.ad_sender.user == request.user %}
+      <h3>Вы отдаете</h3>
+    {% else %}
+      <h3>Вы получаете</h3>
+    {% endif %}
+    <div class="meta">
+      <span>Дата объявления: {{ proposal.ad_sender.created_at }}</span>
+      <span>Пользователь: {{ proposal.ad_sender.user }}</span>
+      <span>Состояние: {{ proposal.ad_sender.condition }}</span>
+    </div>
+    <p>{{ proposal.ad_sender.title }}</p>
+    <p>{{ proposal.ad_sender.description }}</p>
+    <img src="{{ proposal.ad_sender.image.url }}"/>
+  </div>
+
+  {% if proposal.ad_receiver.user == request.user %}
+    {% if proposal.status == 'pending' %}
+    <div class="action-buttons">
+      <form method="post" action="{% url 'exchange_action' proposal.pk %}">
+        {% csrf_token %}
+        <button type="submit" name="action" value="accept">Принять</button>
+        <button type="submit" name="action" value="reject">Отклонить</button>
+      </form>
+    </div>
+  {% endif %}
+  {% endif %}
+</div>
+{% endblock %}

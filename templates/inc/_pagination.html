@@ -1,0 +1,12 @@
+{% load ads_tags %}
+{% if page_obj.has_other_pages %}
+    <ul class="pagination">
+        {% for p in page_obj.paginator.page_range %}
+            {% if page_obj.number == p %}
+                <li class="current-page">{{ p }}</li>
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                <li><a href="?{% url_replace request 'page' p %}">{{ p }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}

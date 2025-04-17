@@ -1,0 +1,20 @@
+{% extends 'ads/base.html' %} {% block content %}
+
+
+<ul class="ads-list">
+  {% for ad in ads %}
+  <li class="ad-item">
+    <a href="{% url 'ad_details' ad.pk %}" class="ad-link">
+      <img src="{{ ad.image.url }}" alt="Фото товара" />
+      <h3>{{ ad.title }}</h3>
+      <div class="meta">
+        <span>Дата: {{ ad.created_at }}</span>
+        <span>Пользователь: {{ ad.user }}</span>
+        <span>Состояние: {{ ad.get_condition_display }}</span>
+      </div>
+      <p class="description">{{ ad.description }}</p>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

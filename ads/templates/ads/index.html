@@ -1,0 +1,37 @@
+{% extends 'ads/base.html' %}
+{% block content %}
+<!-- Форма фильтрации -->
+<form action="{% url 'home' %}" method="GET">
+<div class="filters">
+    {{ form.search_bar }}
+    <div class="checkbox-group">
+    {% for value, label in form.category.field.choices %}
+        <label>
+            <input type="checkbox" name="category" value="{{ value }}" {% if value in selected_categories %} checked {% endif %} > {{ label }}
+        </label>
+    {% endfor %}
+    </div>
+    {{ form.condition }}
+    <button type="submit">Применить фильтры</button>
+</div>
+</form>
+
+<!-- Список объявлений-->
+<ul class="ads-list">
+    {% for ad in page_obj %}
+    <li class="ad-item">
+        <a href="{{ ad.get_absolute_url }}" class="link-wrapper">
+        <img src="{{ ad.image.url }}">
+        <h3>{{ ad.title }}</h3>
+        <div class="meta">
+            <span>Дата: {{ ad.created_at }}</span>
+            <span>Пользователь: {{ ad.user }}</span>
+            <span>Состояние: {{ ad.get_condition_display }}</span>
+            <span>Категория: {{ad.get_category_display }}</span>
+        </div>
+        <p class="description">{{ ad.description }}</p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

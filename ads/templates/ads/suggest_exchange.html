@@ -1,0 +1,12 @@
+{% extends 'ads/base.html' %}
+{% block content %}
+
+<div class="form-container">
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Предложить</button>
+</form>
+</div>
+
+{% endblock %}

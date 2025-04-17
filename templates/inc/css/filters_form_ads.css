@@ -1,0 +1,46 @@
+.filters {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filters input[type="text"],
+.filters select,
+.filters button {
+    padding: 8px;
+    width: 200px;
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.filters .checkbox-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filters .checkbox-group label {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.filters button {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    padding: 10px 20px;
+}
+
+.filters button:hover {
+    background-color: #444;
+}

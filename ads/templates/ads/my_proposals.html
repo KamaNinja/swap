@@ -1,0 +1,62 @@
+{% extends 'ads/base.html' %}
+{% block content %}
+
+<form action="{% url 'my_proposals' %}" method="GET">
+<div class="filters">
+    {{ form.ad_sender }}
+    {{ form.ad_receiver }}
+    <div class="checkbox-group">
+        {% for value, label in form.status.field.choices %}
+        <label>
+            <input type="checkbox" name="status" value="{{ value }}" {% if value in selected_status %} checked {% endif %} > {{ label }}
+        </label>
+        {% endfor %}
+    </div>
+    <button type="submit">Применить фильтры</button>
+</div>
+</form>
+
+{% if not outgoing and not incoming %}
+<h3>Предложений нет</h3>
+{% endif %}
+
+{% if incoming %}
+<h3>Входящие</h3>
+{% endif %}
+<ul class="proposals-list">
+    {% for proposal in incoming %}
+    <li class="proposal-item">
+        <a href="{{ proposal.get_absolute_url }}" class="link-wrapper">
+        <h3>Предложение обмена от {{ proposal.ad_sender.user }}</h3>
+        <div class="meta">
+            <span>Вы отдаете: {{ proposal.ad_receiver.title }}</span>
+            <br>
+            <span>Вы получаете: {{ proposal.ad_sender.title }}</span>
+            <br>
+            <span>Статус: {{ proposal.get_status_display }}</span>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+{% if outgoing %}
+<h3>Исходящие</h3>
+{% endif %}
+<ul class="proposals-list">
+    {% for proposal in outgoing %}
+    <li class="proposal-item">
+        <a href="{% url 'proposal_details' proposal.pk %}" class="link-wrapper">
+        <h3>Вы предложили обмен пользователю {{ proposal.ad_receiver.user }}</h3>
+        <div class="meta">
+            <span>Вы отдаете: {{ proposal.ad_sender.title }}</span>
+            <br>
+            <span>Вы получаете: {{ proposal.ad_receiver.title }}</span>
+            <br>
+            <span>Статус: {{ proposal.get_status_display }}</span>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

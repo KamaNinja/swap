@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="{% static 'ads/css/styles.css' %}" type="text/css"/>
+  <title>{{ title }}</title>
+</head>
+<body>
+{% block header %}
+{% include 'inc/_header.html' %}
+{% endblock %}
+<div class="container">
+    {% block message %}
+    {% include 'inc/_message.html' %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block pagination %}
+    {% include 'inc/_pagination.html' %}
+    {% endblock %}
+</div>
+</body>
+</html>
