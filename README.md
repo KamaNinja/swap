@@ -71,5 +71,12 @@ python3 manage.py runserver
 
 <p>Имена пользователей: user1, user2, user3, user4, user5</p>
 <p>Пароли: user1, user2, user3, user4, user5</p>
+
+Чтобы запустить тесты, выполни команду:
+
+```
+python3 manage.py test ads.tests
+```
+
 Удачи!)
 
